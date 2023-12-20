@@ -4,7 +4,7 @@ import java.io.IOException;
 public class Sorting {
     
     // Ordena un arreglo y genera un archivo .txt
-    static void OrdenarArchivo(int[] array, String path, int option){
+    static void SortFile(int[] array, String path, int option){
         long startTime;
         long endTime;
         long elapsedTime;
@@ -46,6 +46,8 @@ public class Sorting {
         int i = 0; //arreglo izquierdo.
         int j = 0; //arreglo derecho.
 
+        // Copia elementos del arreglo original
+        // al arreglo izquierdo y derecho.
         for(; i < length; i++){
             if(i < middle){
                 leftArray[i] = array[i];
@@ -68,7 +70,7 @@ public class Sorting {
         int l = 0;
         int r = 0;
 
-        //revisar condiciones para la mezcla
+        // Revisa que queden elementos para la mezcla.
         while(l < leftSize && r < rightSize){
             if(leftArray[l] < rightArray[r]){
                 array[i] = leftArray[l];
@@ -81,6 +83,7 @@ public class Sorting {
                 r++;
             }
         }
+        // Inserta elementos restantes.
         while(l < leftSize){
             array[i] = leftArray[l];
             i++;

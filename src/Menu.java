@@ -16,31 +16,36 @@ public class Menu {
             switch(option){
                 // Vuelve al menú.
                 case 0: 
-                    continue;
+                continue;
+
                 // Genera un archivo aleatorio nuevo.
                 case 1:
-                    System.out.print("Escriba la cantidad de numeros: ");
-                    WriteAndRead.size = VerifyInput();
-                    WriteAndRead.TextGenerator(fileName);
-                    continue;
+                System.out.print("Escriba la cantidad de numeros: ");
+                WriteAndRead.size = VerifyInput();
+                WriteAndRead.TextGenerator(fileName);
+                continue;
+
                 // Lee el archivo aleatorio.
                 case 2:
-                    WriteAndRead.TextReader(fileName);
-                    continue;
+                WriteAndRead.TextReader(fileName);
+                continue;
+
                 // Ordena el archivo aleatorio.
                 case 3: 
-                    int[] array = WriteAndRead.TextToArray(fileName);
-                    if (array != null)
-                        SortSelection(array, sortedFileName);
-                    continue;
+                int[] array = WriteAndRead.TextToArray(fileName);
+                if (array != null)
+                    SortSelection(array, sortedFileName);
+                continue;
+
                 // Lee el archivo ordenado.
                 case 4: 
-                    WriteAndRead.TextReader(sortedFileName);
-                    continue;
+                WriteAndRead.TextReader(sortedFileName);
+                continue;
+                
                 // Busca un número en el archivo ordenado.
                 case 5: 
-                    SearchNumber(sortedFileName);
-                    continue;                                                                 
+                SearchNumber(sortedFileName);
+                continue;                                                                 
         }
         break;
         }
@@ -64,7 +69,7 @@ public class Menu {
         System.out.println("-- Algoritmos de ordenamiento --\n\t1 - Merge Sort\n\t2 - Bubble Sort\n");
         System.out.print("Seleccione el metodo de ordenamiento: ");
         int option = VerifyInput();
-        Sorting.OrdenarArchivo(array, name, option);
+        Sorting.SortFile(array, name, option);
     }
 
     // Busca un número en un archivo .txt

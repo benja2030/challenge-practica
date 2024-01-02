@@ -6,9 +6,9 @@ public class WriteAndRead {
     static int size;
     
     // Genera archivo .txt con numeros aleatorios.
-    static void TextGenerator(String name){
+    static void TextGenerator(String path){
         try{
-            FileWriter writer = new FileWriter(name);
+            FileWriter writer = new FileWriter(path);
             for(int i = 0; i < size; i++){
                 writer.write(Integer.toString((int)((Math.random()*(size-1))+1))+"\n");
             }
@@ -23,11 +23,11 @@ public class WriteAndRead {
     // Lee archivo .txt
     static void TextReader(String path){
         try{
-            BufferedReader reader = new BufferedReader(new FileReader(path));
-            String line;
+            FileReader reader = new FileReader(path);
+            int line;
             System.out.println("\n");
-            while((line = reader.readLine())!= null){
-                System.out.print(line+" ");
+            while((line = reader.read())!= -1){
+                System.out.print((char)line+"");
             }
             reader.close();
         }

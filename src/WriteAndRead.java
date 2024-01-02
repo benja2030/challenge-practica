@@ -6,36 +6,42 @@ public class WriteAndRead {
     static int size;
     
     // Genera archivo .txt con numeros aleatorios.
-    static void TextGenerator(String path){
+    static void TextGenerator(String path) throws IOException{
+        FileWriter writer = new FileWriter(path);
         try{
-            FileWriter writer = new FileWriter(path);
+            //FileWriter writer = new FileWriter(path);
             for(int i = 0; i < size; i++){
                 writer.write(Integer.toString((int)((Math.random()*(size-1))+1))+"\n");
             }
-            writer.close();
         }
         catch (IOException e){
             e.printStackTrace();
+        }
+        finally{
+            writer.close();
         }
         System.out.println("\nSe genero un archivo");
     }
 
     // Lee archivo .txt
-    static void TextReader(String path){
+    static void TextReader(String path) throws IOException{
+        FileReader reader = new FileReader(path);
         try{
-            FileReader reader = new FileReader(path);
+            //FileReader reader = new FileReader(path);
             int line;
             System.out.println("\n");
-            while((line = reader.read())!= -1){
+            while((line = reader.read())!= -1){ //Continua leyendo hasta que el metodo read retorne -1.
                 System.out.print((char)line+"");
             }
-            reader.close();
         }
         catch (FileNotFoundException e){
             System.out.println("\nEl archivo no existe");
         }
         catch (IOException e){
             e.printStackTrace();
+        }
+        finally{
+            reader.close();
         }
     }
 

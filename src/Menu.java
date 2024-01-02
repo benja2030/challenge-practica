@@ -1,9 +1,10 @@
+import java.io.IOException;
 import java.util.Objects;
 import java.util.Scanner;
 
 public class Menu {
 
-    static void menu(String fileName, String sortedFileName){
+    static void menu(String fileName, String sortedFileName) throws IOException{
         int option;
         while(true){
             System.out.println("\n\nOpciones\n-------------------"+
@@ -64,7 +65,7 @@ public class Menu {
     }
 
     // Menú para la elección de algoritmos.
-    private static void SortSelection(int[] array, String name){
+    private static void SortSelection(int[] array, String name) throws IOException{
 
         System.out.println("-- Algoritmos de ordenamiento --\n\t1 - Merge Sort\n\t2 - Bubble Sort\n");
         System.out.print("Seleccione el metodo de ordenamiento: ");

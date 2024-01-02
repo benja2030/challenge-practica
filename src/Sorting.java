@@ -4,7 +4,7 @@ import java.io.IOException;
 public class Sorting {
     
     // Ordena un arreglo y genera un archivo .txt
-    static void SortFile(int[] array, String path, int option){
+    static void SortFile(int[] array, String path, int option) throws IOException{
         long startTime;
         long endTime;
         long elapsedTime;
@@ -12,23 +12,25 @@ public class Sorting {
         startTime = System.nanoTime();
         switch(option){
             case 1:
-                MergeSort(array);
+            MergeSort(array);
             case 2:
-                BubbleSort(array);
+            BubbleSort(array);
         }
         endTime = System.nanoTime();
-        elapsedTime = endTime - startTime;
-        System.out.println("Tiempo transcurrido: " + elapsedTime + " nanosegundos.");
-
+        elapsedTime = (endTime - startTime)/(1000000);
+        System.out.println("Tiempo transcurrido: " + elapsedTime + " milisegundos.");
+        FileWriter writer = new FileWriter(path);
         try{
-            FileWriter writer = new FileWriter(path);
+            //FileWriter writer = new FileWriter(path);
             for(int i = 0; i < array.length; i++){
                 writer.write(array[i]+"\n");
             }
-            writer.close();
         }
         catch (IOException e){
             e.printStackTrace();
+        }
+        finally{
+            writer.close();
         }
         System.out.println("Se genero un archivo ordenado");
     }
